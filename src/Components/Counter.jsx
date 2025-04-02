@@ -16,9 +16,9 @@ function Counter() {
         <button onClick={addMinus}>-</button>
       
         <button onClick={addPlus}>+</button>
-        
+        {arr.toString()}
         </div>
     )
 }
 
-export default Counter()
+export default Counter
