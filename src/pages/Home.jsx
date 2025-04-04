@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import User from "../Components/user.jsx"
+import { Link } from 'react-router-dom';
 
 function Home() {
     const [users, setUsers] = useState([])
@@ -15,20 +17,26 @@ function Home() {
     }, 1600);
     },[]);
     
-        const pixels = "2px"
+        function renderUsers() {
+            return  users.map((user) => (
+                <Link to={`/users/${user.id}`} key={user.id} >
+                     <User  
+                     id={user.id} 
+                     name={user.name} 
+                     email={user.email} 
+                     username={user.username
+                     />
+                    </Link>
+                     ))
+        }
+
+        function renderSkeletonLoadingState() {
+            return <h1>Loading...</h1>
+        }
 
 return (
         <div>
-         {users.map((user) => {
-                 <div style={{border: `${pixels} solid black`}}>
-                    <div>{user?.id}</div>
-                    <div>{user?.name}</div>
-                    <div>{user?.email}</div>
-                    <div>{user?.username}</div>
-                    <div/>
-                
-         })}
-          
+         {users.length ? renderUsers() : renderSkeletonLoadingState()}
         </div>
        );
 }

@@ -4,17 +4,18 @@ import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import Nav from "./Components/Nav.jsx";
+import Users from './pages/users'
 
 function App() {
 
   return (
     
      <Router>
-      <Nav />
+      
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />}/>
-        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/users/:id' element={<Users />}/>
+        
       </Routes>
      </Router>
     
